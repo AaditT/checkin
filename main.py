@@ -23,12 +23,20 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
+    attendees = []
+    myFile = open("names.txt", 'r')
+    for line in myFile.readlines():
+        attendees.append(str(line.rstrip()))
     if request.method == 'POST':
-        if request.form['password'] == pwd:
-            _names.append(str(request.form['username']))
-            return redirect(url_for('index'))
+        if request.form['username'] not in attendees:
+            error = "Please register User before logging in"
+            return render_template('login.html', error=error)
         else:
-            error = "incorrect password"
+            if request.form['password'] == pwd:
+                _names.append(str(request.form['username']))
+                return redirect(url_for('index'))
+            else:
+                error = "incorrect password"
     return render_template('login.html', error=error)
 
 @app.route('/manage')
