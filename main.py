@@ -3,22 +3,17 @@
 from flask import Flask, render_template, redirect, url_for, request
 import sys
 import json
-app = Flask(__name__)
 
 attendees = []
-
-crimefile = open("names.txt", 'r')
-for line in crimefile.readlines():
+myFile = open("names.txt", 'r')
+for line in myFile.readlines():
     attendees.append(str(line.rstrip()))
 
 
+app = Flask(__name__)
 
 _names = []
 pwd = str(sys.argv[1])
-
-def deleteContent(fName):
-    with open(fName, "w"):
-        pass
 
 @app.route('/')
 def home():
@@ -46,6 +41,9 @@ def add():
         attendees.append(str(request.form['username']))
         return redirect(url_for('index'))
     return render_template('add.html', error=error)
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
