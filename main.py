@@ -36,7 +36,7 @@ def login():
                 _names.append(str(request.form['username']))
                 return redirect(url_for('index'))
             else:
-                error = "incorrect password"
+                error = "Incorrect password"
     return render_template('login.html', error=error)
 
 @app.route('/manage')
