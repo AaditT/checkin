@@ -1,9 +1,7 @@
-
-
 from flask import Flask, render_template, redirect, url_for, request
-
 app = Flask(__name__)
 
+attendees = ["adarsh","surya","arnav","jay","iggy","andrew","aadit","dev"]
 _names = []
 pwd = "secret"
 
@@ -13,7 +11,7 @@ def home():
 
 @app.route('/index')
 def index():
-    return render_template('index.html', my_list=_names)
+    return render_template('index.html', registered=_names, attendees = attendees)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -25,5 +23,6 @@ def login():
         else:
             error = "incorrect password"
     return render_template('login.html', error=error)
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
