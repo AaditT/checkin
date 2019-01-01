@@ -1,4 +1,4 @@
 # checkin
 A minimalist attendance tracker
 
-![smokey](img/preview.jpg)
+![smokey](img/preview.jpeg)
