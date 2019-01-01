@@ -6,4 +6,3 @@ iggy
 andrew
 aadit
 dev
-jason derulo

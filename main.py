@@ -38,7 +38,8 @@ def login():
 def add():
     error = None
     if request.method == 'POST':
-        attendees.append(str(request.form['username']))
+        f = open("names.txt", "a")
+        f.write(str(request.form['username'])+"\n")
         return redirect(url_for('index'))
     return render_template('add.html', error=error)
 
