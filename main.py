@@ -5,7 +5,12 @@ import sys
 import json
 app = Flask(__name__)
 
-attendees = ["adarsh","surya","arnav","jay","iggy","andrew","aadit","dev"]
+attendees = []
+
+crimefile = open("names.txt", 'r')
+for line in crimefile.readlines():
+    attendees.append(str(line.rstrip()))
+
 
 
 _names = []
