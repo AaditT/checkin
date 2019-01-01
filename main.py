@@ -36,7 +36,7 @@ def add():
             return redirect(url_for('index'))
         else:
             error = "incorrect password"
-    return render_template('login.html', error=error)
+    return render_template('add.html', error=error)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
