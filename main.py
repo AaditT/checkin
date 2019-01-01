@@ -56,7 +56,7 @@ def delete():
                 f.write(i)
         f.truncate()
         f.close()
-        return redirect(url_for('index'))
+        return redirect(url_for('add'))
     return render_template('manage.html', error=error)
 
 if __name__ == '__main__':
