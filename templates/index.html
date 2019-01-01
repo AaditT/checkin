@@ -59,17 +59,24 @@
             {% endfor %}
          </tbody>
       </table>
-      <h1> Not Logged In </h1>
+      <h1> Unregistered </h1>
       <table>
          <tbody>
             {% for item in attendees %}
                {% if item not in registered %}
-                    <tr style="background-color:#f45042">
+                    <tr style="background-color:#ff7878">
                          <td>{{ item }}</td>
                     </tr>
                {% endif %}
             {% endfor %}
          </tbody>
       </table>
+    </br>
+
+
+
+      <a href="{{ url_for('add') }}">
+      <button class="button button2">Add</button>
+      </a>
    </body>
 </html>
