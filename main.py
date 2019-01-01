@@ -31,11 +31,8 @@ def login():
 def add():
     error = None
     if request.method == 'POST':
-        if request.form['password'] == pwd:
-            _names.append(str(request.form['username']))
-            return redirect(url_for('index'))
-        else:
-            error = "incorrect password"
+        attendees.append(str(request.form['username']))
+        return redirect(url_for('index'))
     return render_template('add.html', error=error)
 
 if __name__ == '__main__':

@@ -58,12 +58,10 @@
       </a>
       <h1>Add a new member</h1>
       <br>
-      <form action="/login" method="post" class="form">
-        <input type="text" placeholder="Your Name" name="username" value="{{
+      <form action="/add" method="post" class="form">
+        <input type="text" placeholder="New Member's Name" name="username" value="{{
           request.form.username }}">
-         <input type="password" placeholder="Password" name="password" value="{{
-          request.form.password }}">
-        <input class="btn btn-default" type="submit" value="Login">
+        <input class="btn btn-default" type="submit" value="Add">
       </form>
       {% if error %}
         <p class="error"><strong>Error:</strong> {{ error }}
