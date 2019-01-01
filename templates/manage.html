@@ -38,6 +38,9 @@
     .error {
       color: red;
     }
+    .success {
+      color: green;
+    }
     table {
       font-family: arial, sans-serif;
       border-collapse: collapse;
@@ -69,6 +72,12 @@
           request.form.username }}">
         <input class="btn btn-default" type="submit" value="Add">
       </form>
+      {% if issue %}
+        <p class="error"><strong>Error:</strong> {{ issue }}
+      {% endif %}
+      {% if success %}
+        <p class="success"><strong>Success:</strong> {{ success }}
+      {% endif %}
       <h1>Delete an existing member</h1>
       <br>
       <form action="/delete" method="post" class="form">
@@ -76,6 +85,9 @@
           request.form.existing }}">
         <input class="btn btn-default" type="submit" value="Delete">
       </form>
+      {% if deletion %}
+        <p class="success"><strong>Success:</strong> {{ deletion }}
+      {% endif %}
       {% if error %}
         <p class="error"><strong>Error:</strong> {{ error }}
       {% endif %}
