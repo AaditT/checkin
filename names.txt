@@ -1,5 +1,4 @@
 adarsh
-surya
 arnav
 jay
 iggy
@@ -7,7 +6,5 @@ andrew
 aadit
 dev
 he
-jso
 this ain't it
 aayush chaturvedi
-tapandas

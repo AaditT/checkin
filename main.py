@@ -35,12 +35,26 @@ def login():
             error = "incorrect password"
     return render_template('login.html', error=error)
 
-@app.route('/manage', methods=['GET', 'POST'])
+@app.route('/add', methods=['GET', 'POST'])
 def add():
     error = None
     if request.method == 'POST':
         f = open("names.txt", "a")
         f.write(str(request.form['username'])+"\n")
+        return redirect(url_for('index'))
+    return render_template('manage.html', error=error)
+@app.route('/delete', methods=['GET', 'POST'])
+def delete():
+    error = None
+    if request.method == 'POST':
+        f = open("names.txt","r+")
+        d = f.readlines()
+        f.seek(0)
+        for i in d:
+            if i != (str(request.form['username'])+"\n"):
+                f.write(i)
+        f.truncate()
+        f.close()
         return redirect(url_for('index'))
     return render_template('manage.html', error=error)
 
