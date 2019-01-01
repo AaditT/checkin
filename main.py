@@ -37,27 +37,34 @@ def manage():
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
-    error = None
     if request.method == 'POST':
         f = open("names.txt", "a")
         f.write(str(request.form['username'])+"\n")
         return redirect(url_for('index'))
-    return render_template('manage.html', error=error)
+    return render_template('manage.html')
 
 @app.route('/delete', methods=['GET', 'POST'])
 def delete():
     error = None
     if request.method == 'POST':
-        f = open("names.txt","r+")
-        d = f.readlines()
-        f.seek(0)
-        for i in d:
-            if i != (str(request.form['username'])+"\n"):
-                f.write(i)
-        f.truncate()
-        f.close()
-        return redirect(url_for('add'))
+        attendees = []
+        myFile = open("names.txt", 'r')
+        for line in myFile.readlines():
+            attendees.append(str(line.rstrip()))
+        if str(request.form['username']) in attendees:
+            myFile = open("names.txt", 'r+')
+            d = myFile.readlines()
+            myFile.seek(0)
+            for i in d:
+                if i != (str(request.form['username'])+"\n"):
+                    myFile.write(i)
+            myFile.truncate()
+            myFile.close()
+            return redirect(url_for('index'))
+        else:
+            error = "User does not exist"
     return render_template('manage.html', error=error)
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

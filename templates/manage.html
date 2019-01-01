@@ -35,6 +35,9 @@
       background-color: #008CBA;
       color: white;
     }
+    .error {
+      color: red;
+    }
     table {
       font-family: arial, sans-serif;
       border-collapse: collapse;
@@ -50,6 +53,9 @@
     tr {
       background-color: #00ff65;
     }
+    .inputc {
+      width: 150px;
+    }
   </style>
   <body>
     <div>
@@ -59,17 +65,14 @@
       <h1>Add a new member</h1>
       <br>
       <form action="/add" method="post" class="form">
-        <input type="text" placeholder="New Member's Name" name="username" value="{{
+        <input class="inputc" type="text" placeholder="New Member's Name" name="username" value="{{
           request.form.username }}">
         <input class="btn btn-default" type="submit" value="Add">
       </form>
-      {% if error %}
-        <p class="error"><strong>Error:</strong> {{ error }}
-      {% endif %}
       <h1>Delete an existing member</h1>
       <br>
       <form action="/delete" method="post" class="form">
-        <input type="text" placeholder="Existing Member's Name" name="username" value="{{
+        <input class="inputc" type="text" placeholder="Existing Member's Name" name="username" value="{{
           request.form.existing }}">
         <input class="btn btn-default" type="submit" value="Delete">
       </form>
