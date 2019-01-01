@@ -2,11 +2,18 @@
 
 from flask import Flask, render_template, redirect, url_for, request
 import sys
+import json
 app = Flask(__name__)
 
 attendees = ["adarsh","surya","arnav","jay","iggy","andrew","aadit","dev"]
+
+
 _names = []
 pwd = str(sys.argv[1])
+
+def deleteContent(fName):
+    with open(fName, "w"):
+        pass
 
 @app.route('/')
 def home():
