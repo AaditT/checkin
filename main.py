@@ -2,10 +2,6 @@
 
 from flask import Flask, render_template, redirect, url_for, request
 import sys
-import json
-
-
-
 
 app = Flask(__name__)
 
@@ -35,6 +31,10 @@ def login():
             error = "incorrect password"
     return render_template('login.html', error=error)
 
+@app.route('/manage')
+def manage():
+    return render_template('manage.html')
+
 @app.route('/add', methods=['GET', 'POST'])
 def add():
     error = None
@@ -43,6 +43,7 @@ def add():
         f.write(str(request.form['username'])+"\n")
         return redirect(url_for('index'))
     return render_template('manage.html', error=error)
+
 @app.route('/delete', methods=['GET', 'POST'])
 def delete():
     error = None
@@ -57,9 +58,6 @@ def delete():
         f.close()
         return redirect(url_for('index'))
     return render_template('manage.html', error=error)
-
-
-
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
