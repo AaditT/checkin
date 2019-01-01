@@ -4,10 +4,7 @@ from flask import Flask, render_template, redirect, url_for, request
 import sys
 import json
 
-attendees = []
-myFile = open("names.txt", 'r')
-for line in myFile.readlines():
-    attendees.append(str(line.rstrip()))
+
 
 
 app = Flask(__name__)
@@ -21,6 +18,10 @@ def home():
 
 @app.route('/index')
 def index():
+    attendees = []
+    myFile = open("names.txt", 'r')
+    for line in myFile.readlines():
+        attendees.append(str(line.rstrip()))
     return render_template('index.html', registered=_names, attendees = attendees)
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -34,14 +35,14 @@ def login():
             error = "incorrect password"
     return render_template('login.html', error=error)
 
-@app.route('/add', methods=['GET', 'POST'])
+@app.route('/manage', methods=['GET', 'POST'])
 def add():
     error = None
     if request.method == 'POST':
         f = open("names.txt", "a")
         f.write(str(request.form['username'])+"\n")
         return redirect(url_for('index'))
-    return render_template('add.html', error=error)
+    return render_template('manage.html', error=error)
 
 
 
