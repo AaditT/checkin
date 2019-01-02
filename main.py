@@ -8,9 +8,7 @@ app = Flask(__name__)
 _names = []
 pwd = str(sys.argv[1])
 
-@app.route('/')
-def home():
-    return redirect(url_for('index'))
+
 
 @app.route('/index')
 def index():
